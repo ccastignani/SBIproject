@@ -289,9 +289,7 @@ With this options we are setting the name of the output file to “output” and
 
      This example corresponds to another 20S proteasome, this time the core. In this case, we have all the interacting pairs. Thus, we can run the program as following:
 
-     ```python
      $ python3 BOB_the_builder.py  -o output
-     ```
 
      We then get a structure with no clashes that looks like this (running time *4sec*):
 
@@ -305,7 +303,7 @@ With this options we are setting the name of the output file to “output” and
 
 In this case we have two interacting pairs, consisting of the tubulin alpha-beta dimers. In this case, we have selected the desired chains to build the model and chosen 21 iterations. This is an arbitrary number, as we know that this structure could go on forever without ever having contacts without the chains. Additionally, our program has a maximum number of iterations permited (100), as we considered that structures with high number of iterations could lead to very large files. In order to build the model, we run the program as followed:
 
-```python
+```
 $ python3 BOB_the_builder.py -o output -c xXZW -i 21
 ```
 
