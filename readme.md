@@ -261,7 +261,7 @@ Following we will see the analysis and execution of some example structures in o
 
 In this example, we have a set of pairs organized in multiple files of interactions between chain X and all the other chains of the complex. In this case then, all the information contained in the files is enough to directly build the complex.  Thus, to achieve this complex we can run:
 
-```python
+```
 $ python3 BOB_the_builder.py  -o output
 ```
 
@@ -275,7 +275,7 @@ With this options we are setting the name of the output file to “output” and
 
      In this case we have a folder containing some interacting pairs, some of them are essential to build the macrocomplex while others are not contained in the complex. Thus, using the -c option we choose to build the model with only those chains we know are necessary to build the complex. Furthermore, using the -i option we can decide how many times this chains should be repeated in the final structure. Thus, to achieve this complex we can run:
 
-     ```python
+     ```
      $ python3 BOB_the_builder.py  -o output -c EFS2O -i 7
      ```
 
@@ -289,15 +289,15 @@ With this options we are setting the name of the output file to “output” and
 
      This example corresponds to another 20S proteasome, this time the core. In this case, we have all the interacting pairs. Thus, we can run the program as following:
 
+     ```
      $ python3 BOB_the_builder.py  -o output
+     ```
 
      We then get a structure with no clashes that looks like this (running time *4sec*):
 
      ![proteasome2](/Users/carla/Desktop/proteasome2.png)
 
-
-
-     When we compare both examples, we notice that in the cases where the user gives to the program only some protein-protein interactions, this suposes a higher computational than running the program with all the pairs.  This is mainly due to the fact that in the first example, the program has to identify the chains using sequence similarity analysis. Besides, as explained before, in this option, we need to copy our structure in every iteration so as not to overwrite it. This results in a computational cost that grows as the structure is built. 
+ When we compare both examples, we notice that in the cases where the user gives to the program only some protein-protein interactions, this suposes a higher computational than running the program with all the pairs.  This is mainly due to the fact that in the first example, the program has to identify the chains using sequence similarity analysis. Besides, as explained before, in this option, we need to copy our structure in every iteration so as not to overwrite it. This results in a computational cost that grows as the structure is built. 
 
 3. Microtubules (**1TUB**)
 
@@ -317,7 +317,7 @@ In this case, the sequence similarity analysis used in our program to identify t
 
 1. Dependency on the file names: Our program is intimately dependent on the names of the PDB files to construct the model, as it uses this parameter to identify similar chains. 
 2. Scalability: In order to build the complex in the iterations options, we need to perform a copy (deepcopy) of the structure. This proceeding has a computational cost that grows exponentially. Thus, we have noticed that our program has a good benchmark in small structures but this decreases in larger structures. 
-3. Heterodimer complexes vs. homodimers: In this project we have noticed the complexity of some macro complexes. Specially those that are heterodimers or those in which there is not a unique way of building them. (VIRUSES AND SO ON)
+3. Complex structures: In this project we have noticed the complexity of some macro complexes. Our program doesn't the iterations to continue when more than two chains overlap (clashes found). However, in spherical structures (such as virus or nucleosome), we find ourselves in a situation in which we should be adding those chains, as even though some chains are clashing, others are giving meaningful information. 
 4. Unable to model protein-RNA or protein-DNA interactions as this option is not implemented yet on our script.
 
 ## Bibliography
